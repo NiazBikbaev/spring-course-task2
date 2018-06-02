@@ -5,6 +5,7 @@ import com.epam.spring.course.task2.domain.Race;
 import com.epam.spring.course.task2.service.HorseService;
 import com.epam.spring.course.task2.service.RaceService;
 
+import javax.annotation.PostConstruct;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +21,7 @@ public class RaceServiceImpl implements RaceService {
 
     private List<Race> raceList;
 
+    @PostConstruct
     private void init() {
         raceList = Stream.generate(() -> {
             List<Horse> collect = Stream.generate(horseService::getHorse)

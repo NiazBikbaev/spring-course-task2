@@ -1,22 +1,22 @@
 package com.epam.spring.course.task2;
 
+import com.epam.spring.course.task2.config.Config;
 import com.epam.spring.course.task2.domain.Horse;
 import com.epam.spring.course.task2.domain.Race;
 import com.epam.spring.course.task2.service.EmulationService;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.List;
 import java.util.Scanner;
 
 /**
- * Entry point.
+ * Default comment.
  **/
-public class HorseRaceEmulator {
-
+public class HorseRaceEmulatorJavaConfig {
     public static void main(String[] args) {
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext("spring-config.xml");
+        ApplicationContext context
+                = new AnnotationConfigApplicationContext(Config.class);
         EmulationService emulationService =
                 context.getBean("emulationService", EmulationService.class);
         Race nextRace = emulationService.getNextRace();
