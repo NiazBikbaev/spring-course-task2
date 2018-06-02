@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="breedDataProvider"
+          init-method="init"
+          class="com.epam.spring.course.task2.provider.impl.BreedDataProviderImpl">
+        <property name="breed">
+            <list>
+                <value>Mustang</value>
+                <value>Brumby</value>
+                <value>Bashkir horse</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="riderDataProvider"
+          init-method="init"
+          class="com.epam.spring.course.task2.provider.impl.RiderDataDataProviderImpl">
+        <property name="rider">
+            <list>
+                <value>John</value>
+                <value>Paul</value>
+                <value>Marat</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="com.epam.spring.course.task2.service.impl.HorseServiceImpl" id="horseService">
+        <property name="breedDataProvider" ref="breedDataProvider"/>
+        <property name="riderDataProvider" ref="riderDataProvider"/>
+    </bean>
+
+    <bean id="raceService" class="com.epam.spring.course.task2.service.impl.RaceServiceImpl"
+          init-method="init">
+        <property name="horseService" ref="horseService"/>
+    </bean>
+    <bean class="com.epam.spring.course.task2.service.impl.EmulationServiceImpl"
+          id="emulationService">
+        <property name="raceService" ref="raceService"/>
+    </bean>
+</beans>
