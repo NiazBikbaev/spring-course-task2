@@ -4,6 +4,8 @@ import com.epam.spring.course.task2.domain.Horse;
 import com.epam.spring.course.task2.domain.Race;
 import com.epam.spring.course.task2.service.HorseService;
 import com.epam.spring.course.task2.service.RaceService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.Collections;
@@ -15,6 +17,7 @@ import java.util.stream.Stream;
 /**
  * Default comment.
  **/
+@Service
 public class RaceServiceImpl implements RaceService {
 
     private HorseService horseService;
@@ -42,6 +45,7 @@ public class RaceServiceImpl implements RaceService {
      *
      * @param horseService value
      */
+    @Autowired
     public void setHorseService(HorseService horseService) {
         this.horseService = horseService;
     }

@@ -4,6 +4,9 @@ import com.epam.spring.course.task2.domain.Horse;
 import com.epam.spring.course.task2.domain.Race;
 import com.epam.spring.course.task2.service.EmulationService;
 import com.epam.spring.course.task2.service.RaceService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -14,6 +17,7 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Default comment.
  **/
+@Service
 public class EmulationServiceImpl implements EmulationService {
 
     private RaceService raceService;
@@ -57,6 +61,7 @@ public class EmulationServiceImpl implements EmulationService {
         }));
     }
 
+    @Autowired
     public void setRaceService(RaceService raceService) {
         this.raceService = raceService;
     }

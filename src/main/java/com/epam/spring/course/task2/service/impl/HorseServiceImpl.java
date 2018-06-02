@@ -4,10 +4,14 @@ import com.epam.spring.course.task2.domain.Horse;
 import com.epam.spring.course.task2.provider.BreedDataProvider;
 import com.epam.spring.course.task2.provider.RiderDataProvider;
 import com.epam.spring.course.task2.service.HorseService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  * Default comment.
  **/
+@Service
 public class HorseServiceImpl implements HorseService {
 
     private BreedDataProvider breedDataProvider;
@@ -25,10 +29,12 @@ public class HorseServiceImpl implements HorseService {
         return horse;
     }
 
+    @Autowired
     public void setBreedDataProvider(BreedDataProvider breedDataProvider) {
         this.breedDataProvider = breedDataProvider;
     }
 
+    @Autowired
     public void setRiderDataProvider(RiderDataProvider dataProvider) {
         this.riderDataProvider = dataProvider;
     }

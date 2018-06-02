@@ -1,11 +1,10 @@
 package com.epam.spring.course.task2;
 
-import com.epam.spring.course.task2.config.Config;
 import com.epam.spring.course.task2.domain.Horse;
 import com.epam.spring.course.task2.domain.Race;
 import com.epam.spring.course.task2.service.EmulationService;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
 import java.util.Scanner;
@@ -13,12 +12,12 @@ import java.util.Scanner;
 /**
  * Default comment.
  **/
-public class HorseRaceEmulatorJavaConfig {
+public class HorseRaceEmulatorAnnotationConfig {
     public static void main(String[] args) {
         ApplicationContext context
-                = new AnnotationConfigApplicationContext(Config.class);
+                = new ClassPathXmlApplicationContext("spring-config-annotation.xml");
         EmulationService emulationService =
-                context.getBean(EmulationService.class);
+                context.getBean("emulationService", EmulationService.class);
         Race nextRace = emulationService.getNextRace();
         List<Horse> horses = nextRace.getHorses();
         for (int i = 0; i < horses.size(); i++) {
